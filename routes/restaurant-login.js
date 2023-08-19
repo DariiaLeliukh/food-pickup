@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const restaurantsQueries = require('../db/queries/restaurants');
 const bcrypt = require("bcryptjs");
 
@@ -28,17 +28,21 @@ router.post("/", (req, res) => {
 
   restaurantsQueries.getUserByEmail(email)
     .then(data => {
-      console.log(data);
+      console.log('data');
+      console.log(data[0]);
+      console.log("type of " + typeof (data));
+
+      console.log('data.password');
+      console.log(data[0].password);
 
       if (data.length === 0) {
-        console.log("Invalid creadentials");
-      }
-
-      console.log(typeof(data));
-      console.log(data.password);
-
-      if (!bcrypt.compareSync(password, data.password)) {
-        console.log("Invalid password")
+        res.status(403).json({ error: 'Invalid Credentials' });
+        return;
+      } else if (!bcrypt.compareSync(password, data[0].password)) {
+        // TODO: combine this else if with previous if and make it look nice (return to form with error Invalid Credentials)
+        res.status(403).json({ error: 'Invalid password' });
+      } else {
+        res.redirect("/");
       }
 
     })
