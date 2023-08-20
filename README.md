@@ -18,9 +18,9 @@ For inspiration check out how Ritual works, but keep in mind that's implemented 
   password: labber
   database: midterm
   ```
-2. Install dependencies: npm i
-3. Fix to binaries for sass: npm rebuild node-sass
-4. Reset database: npm run db:reset
+2. Install dependencies: `npm i`
+3. Fix to binaries for sass: `npm rebuild node-sass`
+4. Reset database: `npm run db:reset`
   Check the db folder to see what gets created and seeded in the SDB
 
 ## Run the server
