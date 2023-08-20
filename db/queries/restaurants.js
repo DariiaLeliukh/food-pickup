@@ -7,12 +7,19 @@ const getUserByEmail = (email) => {
     });
 };
 
-const getUserByID = (id) => {
+const getRestaurantByID = (id) => {
   return db.query('SELECT * FROM restaurants WHERE id = $1;', [id])
     .then(data => {
       return data.rows;
     });
 };
 
+const getRestaurants = () => {
+  return db.query('SELECT * FROM restaurants;')
+    .then(data => {
+      return data.rows;
+    });
+};
 
-module.exports = { getUserByEmail, getUserByID };
+
+module.exports = { getUserByEmail, getRestaurantByID, getRestaurants };

@@ -1,17 +1,54 @@
 // Client facing scripts here
-$(() => {
-  $('#fetch-users').on('click', () => {
-    $.ajax({
-      method: 'GET',
-      url: '/api/users'
-    })
-    .done((response) => {
-      const $usersList = $('#users');
-      $usersList.empty();
 
-      for(const user of response.users) {
-        $(`<li class="user">`).text(user.name).appendTo($usersList);
-      }
-    });
+/*
+  Creates an article element with the tweeter data provided
+  Returns string with all the HTML for one tweeter post
+*/
+function createRestaurantElement(data) {
+  const $restaurant = $(`<article class="restaurant">
+  <header>
+  </header>
+  <div class="body">
+    <a href="/${data.id}/menu">${data.name}</a>
+  </div>
+  <footer>
+  </footer>
+</article>
+`);
+  return $restaurant;
+}
+
+/*
+  Render all the restaurants
+*/
+const renderRestaurants = function(restaurants) {
+  $('#restaurant-list').empty();
+  restaurants.forEach(element => {
+    const $restaurant = createRestaurantElement(element);
+    $('#restaurant-list').append($restaurant);
   });
+};
+
+/*
+  Load all the restaurants from the db
+*/
+const loadRestaurants = () => {
+  $.ajax({
+    url: "/api/all-restaurants",
+    type: "GET",
+    success: (result) => {
+      renderRestaurants(result);
+    },
+    error: (error) => {
+      console.error("An error occured, ", error);
+    },
+  });
+};
+
+/*
+  Main functionality
+*/
+
+$(document).ready(function() {
+  loadRestaurants();
 });

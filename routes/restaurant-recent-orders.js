@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   if (!req.session.user_id) {
     res.redirect("/restaurant-login");
   } else {
-    restaurantsQueries.getUserByID(req.session.user_id)
+    restaurantsQueries.getRestaurantByID(req.session.user_id)
       .then(data => {
         if (data.length === 0) {
           res.redirect("/restaurant-login");
