@@ -44,6 +44,7 @@ const restaurantLogin = require('./routes/restaurant-login');
 const pastOrders = require('./routes/restaurant-past-orders');
 const recentOrders = require('./routes/restaurant-recent-orders');
 const restaurantApiRoutes = require('./routes/all-restaurants');
+const restaurantLogout = require('./routes/restaurant-logout');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -55,6 +56,8 @@ app.use('/restaurant-login', restaurantLogin);
 app.use('/restaurant-past-orders', pastOrders);
 app.use('/restaurant-recent-orders', recentOrders);
 app.use('/api/all-restaurants', restaurantApiRoutes);
+app.use('/restaurant-logout', restaurantLogout);
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -67,14 +70,6 @@ app.get('/', (req, res) => {
   };
   res.render('index', templateVars);
 });
-
-app.post("/logout", (req, res) => {
-  // clear cookie
-  req.session = null;
-  // redirect back to restaurant-login page
-  res.redirect("/restaurant-login");
-});
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
