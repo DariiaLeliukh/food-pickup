@@ -63,6 +63,14 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.post("/logout", (req, res) => {
+  // clear cookie
+  req.session = null;
+  // redirect back to restaurant-login page
+  res.redirect("/restaurant-login");
+});
+
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
