@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 router.post("/", (req, res) => {
   const { email, password } = req.body;
-  restaurantsQueries.getUserByEmail(email)
+  restaurantsQueries.getRestaurantByEmail(email)
     .then(data => {
 
       if (data.length === 0) {

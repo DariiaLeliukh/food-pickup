@@ -1,6 +1,6 @@
 const db = require('../connection');
 
-const getUserByEmail = (email) => {
+const getRestaurantByEmail = (email) => {
   return db.query('SELECT * FROM restaurants WHERE email = $1;', [email])
     .then(data => {
       return data.rows;
@@ -22,4 +22,4 @@ const getRestaurants = () => {
 };
 
 
-module.exports = { getUserByEmail, getRestaurantByID, getRestaurants };
+module.exports = { getRestaurantByEmail, getRestaurantByID, getRestaurants };
