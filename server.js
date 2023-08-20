@@ -42,6 +42,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const restaurantLogin = require('./routes/restaurant-login');
 const pastOrders = require('./routes/restaurant-past-orders');
+const recentOrders = require('./routes/restaurant-recent-orders');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -51,6 +52,7 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/restaurant-login', restaurantLogin);
 app.use('/restaurant-past-orders', pastOrders);
+app.use('/restaurant-recent-orders', recentOrders);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

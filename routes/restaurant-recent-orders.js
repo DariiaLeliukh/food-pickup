@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
           const templateVars = {
             user: data[0] || null,
           };
-          res.render("pastOrders", templateVars);
+          res.render("recentOrders", templateVars);
         }
 
       })

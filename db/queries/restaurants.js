@@ -7,5 +7,12 @@ const getUserByEmail = (email) => {
     });
 };
 
+const getUserByID = (id) => {
+  return db.query('SELECT * FROM restaurants WHERE id = $1;', [id])
+    .then(data => {
+      return data.rows;
+    });
+};
 
-module.exports = { getUserByEmail };
+
+module.exports = { getUserByEmail, getUserByID };

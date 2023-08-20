@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
   <title>Login</title>
-  
+
 </head>
+
 <body>
-  <h1>Login</h1>
-  <form action="/restaurant-login" method="POST">
-    <label for="email">Email:</label>
-    <input type="email" name="email">
-    <br>  
-    <label for="formPassword">Password:</label>
-    <input type="password" name="password">
-    <button type="submit">Login</button>
-  </form>
+  <%- include('partials/_header-restaurant') %>
+    <h1>Login</h1>
+    <form action="/restaurant-login" method="POST">
+      <label for="email">Email:</label>
+      <input type="email" name="email">
+      <br>
+      <label for="formPassword">Password:</label>
+      <input type="password" name="password">
+      <button type="submit">Login</button>
+    </form>
 </body>
+
 </html>
