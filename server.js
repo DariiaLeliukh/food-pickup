@@ -46,6 +46,7 @@ const pastOrders = require('./routes/restaurant-past-orders');
 const recentOrders = require('./routes/restaurant-recent-orders');
 const restaurantApiRoutes = require('./routes/all-restaurants');
 const restaurantMenu = require('./routes/menu');
+const orderStatus = require('./routes/client-side');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -59,6 +60,7 @@ app.use('/restaurant-past-orders', pastOrders);
 app.use('/restaurant-recent-orders', recentOrders);
 app.use('/api/all-restaurants', restaurantApiRoutes);
 app.use('/menu', restaurantMenu);
+app.use('/client-side', orderStatus);
 
 // Note: mount other resources here, using the same pattern above
 
