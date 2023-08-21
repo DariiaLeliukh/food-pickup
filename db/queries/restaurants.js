@@ -21,5 +21,20 @@ const getRestaurants = () => {
     });
 };
 
+const getOrderStatus = (orderId) => {
+  return db.query(
+    `SELECT orders.id, statuses.status
+    FROM orders
+    JOIN statuses ON orders.status_id = statuses.id
+    WHERE orders.id = $1;`, [orderId])
+    .then((data) => {
+      return data.rows[0];
+    })
+    .catch((err) => {
+      console.error(err.message);
+      throw err;
+    });
+};
 
-module.exports = { getRestaurantByEmail, getRestaurantByID, getRestaurants };
+
+module.exports = { getRestaurantByEmail, getRestaurantByID, getRestaurants, getOrderStatus  };
