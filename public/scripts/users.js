@@ -4,19 +4,20 @@
   Creates an article element with the tweeter data provided
   Returns string with all the HTML for one tweeter post
 */
-function createRestaurantElement(data) {
-  const $restaurant = $(`<article class="restaurant">
-  <header>
-  </header>
-  <div class="body">
-    <a href="/${data.id}/menu">${data.name}</a>
-  </div>
-  <footer>
-  </footer>
-</article>
+const createRestaurantElement = (data) => {
+  const $restaurant = $(`
+    <article class="restaurant">
+      <header>
+      </header>
+      <div class="body">
+        <a href="/${data.id}/menu">${data.name}</a>
+      </div>
+      <footer>
+      </footer>
+    </article>
 `);
   return $restaurant;
-}
+};
 
 /*
   Render all the restaurants
@@ -40,7 +41,7 @@ const loadRestaurants = () => {
       renderRestaurants(result);
     },
     error: (error) => {
-      console.error("An error occured, ", error);
+      console.error("An error occurred, ", error);
     },
   });
 };

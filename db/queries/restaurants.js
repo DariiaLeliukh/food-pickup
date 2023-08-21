@@ -21,5 +21,12 @@ const getRestaurants = () => {
     });
 };
 
+const getMenu = (restaurant_id) => {
+  return db.query(`SELECT * FROM menu_items WHERE restaurant_id = ${restaurant_id}`)
+    .then(data => {
+      return data.rows;
+    });
+};
 
-module.exports = { getRestaurantByEmail, getRestaurantByID, getRestaurants };
+
+module.exports = { getRestaurantByEmail, getRestaurantByID, getRestaurants, getMenu };
