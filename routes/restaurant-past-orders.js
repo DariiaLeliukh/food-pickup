@@ -13,13 +13,22 @@ router.get('/', (req, res) => {
           res.redirect("/restaurant-login");
           return;
         } else {
-          const templateVars = {
-            user: data[0] || null,
-          };
-          res.render("pastOrders", templateVars);
-        }
 
-      })
+          const restaurantId = data[0].id;
+          restaurantsQueries.getPastOrdersForRestaurant(restaurantId)
+            .then(pastOrders => {
+              const templateVars = {
+                user: data[0] || null,
+                pastOrders: pastOrders.rows,
+              };
+          res.render("pastOrders", templateVars);
+        })
+        .catch(err => {
+          res.status(500).json({ error: err.message });
+      });
+    }
+  })
+  
       .catch(err => {
         res
           .status(500)

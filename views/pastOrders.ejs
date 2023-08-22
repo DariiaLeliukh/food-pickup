@@ -14,7 +14,23 @@
 <body>
   <%- include('partials/_header-restaurant') %>
     <h1>Past Orders</h1>
-    <div id="past-orders"></div>
+    <div id="past-orders">
+      <% if (pastOrders && pastOrders.length > 0) { %>
+        <ul>
+          <% pastOrders.forEach(order => { %>
+            <li>
+              Order ID: <%= order.id %><br>
+              Menu Items: <%= order.menu_item %><br>
+              Total: <%= order.total %><br>
+              Status: <%= order.order_status %>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        <p>No past orders available.</p>
+      <% } %>
+
+    </div>
 </body>
 
 </html>

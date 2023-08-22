@@ -42,5 +42,20 @@ const getOrderStatus = (orderId) => {
     });
 };
 
+const getPastOrdersForRestaurant = (restaurantId) => {
+  return db.query(
+    `
+    SELECT orders.*, statuses.status AS order_status, menu_items.name as menu_item
+    FROM orders
+    JOIN statuses ON orders.status_id = statuses.id
+    JOIN order_items ON orders.id = order_items.order_id
+    JOIN menu_items ON order_items.menu_items_id = menu_items.id
+    WHERE orders.restaurant_id = $1
+    AND statuses.status = 'Completed'
+    ORDER BY orders.order_date DESC;
+    `,
+    [restaurantId]
+  );
+};
 
-module.exports = { getRestaurantByEmail, getRestaurantByID, getRestaurants, getMenu, getOrderStatus };
+module.exports = { getRestaurantByEmail, getRestaurantByID, getRestaurants, getMenu, getOrderStatus, getPastOrdersForRestaurant };
