@@ -10,8 +10,8 @@
   <title>Order Status</title>
 </head>
 <body>
+  <%- include('partials/_header') %>
   <h1>Order Status</h1>
-  <% console.log(status); %>
   <% if (status) { %>
       <p>Order ID: <%= status.id %></p>
     <p>Status: <%= status.status %></p>
