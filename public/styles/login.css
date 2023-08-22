@@ -1,0 +1,12 @@
+.modal {
+  display: block;
+  margin-top: 10%;
+}
+
+.modal-footer {
+  display: contents;
+}
+
+.modal-header {
+  justify-content: center;
+}
