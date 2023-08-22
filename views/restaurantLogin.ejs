@@ -6,41 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
-  <link rel="stylesheet" href="public/styles/login.css" type="text/css"/>
-  <link rel="stylesheet" href="public/styles/header.css" type="text/css"/>
+  <link rel="stylesheet" href="/styles/login.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <title>Login</title>
 
 </head>
 
 <body>
   <%- include('partials/_header') %>
-
-
-
-<div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Login</h5>
-      </div>
-      <div class="modal-body">
-        <form action="/restaurant-login" method="POST">
-          <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Email</label>
-            <input type="email" class="form-control" id="formGroupExampleInput" placeholder="example@gmail.com">
-          </div>
-          <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Password</label>
-            <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password">
-          </div>
-
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-success" type="submit">Login</button>
-      </div>
+    <div class="container">
+      <form action="/restaurant-login" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" name="email">
+        <br>
+        <label for="formPassword">Password:</label>
+        <input type="password" name="password">
+        <button type="submit">Login</button>
+      </form>
     </div>
-  </div>
-</div>
 </body>
+
 </html>

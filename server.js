@@ -33,7 +33,7 @@ app.use(
     isSass: false, // false => scss, true => sass
   })
 );
-app.use("/public",express.static('public'));
+app.use(express.static('public'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -46,7 +46,7 @@ const pastOrders = require('./routes/restaurant-past-orders');
 const recentOrders = require('./routes/restaurant-recent-orders');
 const restaurantApiRoutes = require('./routes/all-restaurants');
 const restaurantMenu = require('./routes/menu');
-const orderStatus = require('./routes/client-side');
+const orderStatus = require('./routes/order-status');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -60,7 +60,7 @@ app.use('/restaurant-past-orders', pastOrders);
 app.use('/restaurant-recent-orders', recentOrders);
 app.use('/api/all-restaurants', restaurantApiRoutes);
 app.use('/menu', restaurantMenu);
-app.use('/client-side', orderStatus);
+app.use('/order-status', orderStatus);
 
 // Note: mount other resources here, using the same pattern above
 
