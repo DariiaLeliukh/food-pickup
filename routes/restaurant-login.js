@@ -16,9 +16,11 @@ router.get('/', (req, res) => {
 
 router.post("/", (req, res) => {
   const { email, password } = req.body;
+  console.log("req.body", req.body);
   restaurantsQueries.getRestaurantByEmail(email)
     .then(data => {
-
+    console.log("data[0]", data[0]);
+    console.log("password", password);
       if (data.length === 0) {
         res.status(403).json({ error: 'Invalid Credentials' });
         return;
