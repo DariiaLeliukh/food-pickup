@@ -7,19 +7,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <% if (user) { %>
-          <div class="ml-auto">
-            Logged In as: <%= user.email %>
-              <form action="/restaurant-logout" method="post" class="form-inline d-inline">
-                <button type="submit" class="btn btn-primary">Logout</button>
-              </form>
-          </div>
-          <% } else { %>
-            <div class="ml-auto">
-              <a href="/restaurant-login" class="btn btn-primary">Restaurant Login</a>
-            </div>
-            <% } %>
-
+        <div class="ml-auto">
+          <a href="/restaurant-login" class="btn btn-primary">Restaurant Login</a>
+        </div>
       </div>
     </div>
   </nav>

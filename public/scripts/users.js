@@ -10,7 +10,7 @@ const createRestaurantElement = (data) => {
       <header>
       </header>
       <div class="body">
-        <a href="/${data.id}/menu">${data.name}</a>
+        <a href="/menu/${data.id}">${data.name}</a>
       </div>
       <footer>
       </footer>

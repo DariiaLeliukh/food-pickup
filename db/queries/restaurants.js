@@ -21,8 +21,8 @@ const getRestaurants = () => {
     });
 };
 
-const getMenu = (restaurant_id) => {
-  return db.query(`SELECT * FROM menu_items WHERE restaurant_id = ${restaurant_id}`)
+const getMenu = (restaurantId) => {
+  return db.query(`SELECT * FROM menu_items WHERE restaurant_id = $1;`, [restaurantId])
     .then(data => {
       return data.rows;
     });

@@ -10,14 +10,20 @@
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/users.js"></script>
+  <script defer src="/scripts/menu.js"></script>
 </head>
 
 <body>
   <%- include('partials/_header') %>
     <div class="container">
       <h1>Menu</h1>
-      <section id="menu-list"></section>
+      <section id="menu-list">
+        <% for(const element in menuItems) { %>
+          <div class="col-8 col-md-4">
+            (<%= menuItems[element].name %>)
+          </div>
+          <% } %>
+      </section>
     </div>
 
 </body>
