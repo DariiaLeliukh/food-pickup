@@ -11,18 +11,153 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/menu.js"></script>
+  <style>
+
+    body {
+      background-color: #eee;
+
+    }
+    .menu-container {
+      width: 100%;
+      margin: auto;
+    }
+
+    .cover-photo {
+      height: 7em;
+      overflow: hidden;
+    }
+    
+    .cover-photo img {
+      width: 100%;
+      top: -10em;
+      position: relative;
+    }
+                  /* Restaurant header  */
+    .restaurant-details {
+      display: flex;
+      flex-direction: row;
+      gap: 2em;
+    }
+
+    .restaurantHeader {
+      padding: 1em 2em;
+      background-color: white;
+    }
+
+    .restaurantHeader h1 {
+      font-size: large;
+    }
+
+    .address {
+      font-weight: bold;
+    }
+                  /* Menu items */
+
+    #menu-list {
+      width: 80%;
+      margin: auto;
+    }     
+
+    #menu-list .item-photo {
+      width: 10em;
+      height: 10em;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    #menu-list .item-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+    
+    .menu-item {
+      padding: 1em;
+      margin: 2em;
+      border-radius: 10px;
+      background-color: white;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: center;
+      overflow: hidden;
+    }
+
+    .infoEvents {
+      flex: 3;
+    }
+    
+    .events form {
+      width: 50%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .events .quantity {
+      display: flex;
+      flex-direction: row;
+    }
+
+  </style>
 </head>
 
 <body>
   <%- include('partials/_header') %>
-    <div class="container">
-      <h1>Menu</h1>
+    <div class="cover-photo">
+      <img src="<%= restaurants[rId].image %>" alt="Restaurant'$ cover photo">
+    </div>
+<!-- Main menu container -->
+    <div class="menu-container">
+      
+      <!-- Restauran header -->
+      <div class="restaurantHeader">
+        <h1><%= restaurants[rId].name %></h1>
+        <div class="restaurant-details">
+          <p class="rating">★ <%= restaurants[rId].rating %></p>
+          <p class="address"><%= restaurants[rId].address %></p>
+          <p class="opHours">
+            <% let startHour = restaurants[rId].operating_hours_start.toString() %>
+            <% let endHour = restaurants[rId].operating_hours_end.toString() %>
+
+            <%= startHour.slice(0,-2) + ':'+ startHour.slice(-2) %>
+             - 
+            <%= endHour.slice(0,-2) + ':' + endHour.slice(-2) %>            
+          </p>
+        </div>
+      </div>
+
+      <!-- Menu list -->
       <section id="menu-list">
         <% for(const element in menuItems) { %>
-          <div class="col-8 col-md-4">
-            (<%= menuItems[element].name %>)
-          </div>
-          <% } %>
+          <article class="menu-item">
+            <div class="infoEvents">
+              <h2>
+                <%= menuItems[element].name %>
+              </h2>
+              <p class="description">
+                <%= menuItems[element].description %>
+              </p>
+              <p class="price">
+                $<%= menuItems[element].price %>
+              </p>
+
+              <div class="events">
+                <form action="/cart" method="POST">
+                  <div class="quantity">
+                    <button>-</button>
+                    <p class="item-quantity">0</p>
+                    <button>+</button>
+                  </div>
+                  <button>Add to order</button>
+                </form>
+              </div>
+            </div>
+            <!-- it would be nice to have alt atribute in db for each image  -->
+            <div class="item-photo">
+              <img src="<%= menuItems[element].image %>" alt="<%= menuItems[element].description %>">
+            </div>
+          </article>
+        <% } %>
       </section>
     </div>
 
