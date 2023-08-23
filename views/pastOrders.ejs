@@ -14,7 +14,32 @@
 <body>
   <%- include('partials/_header-restaurant') %>
     <h1>Past Orders</h1>
-    <div id="past-orders"></div>
+    <div id="past-orders">
+      <% if (pastOrders && pastOrders.length > 0) { %>
+        <ul>
+          <% pastOrders.forEach(order => { %>
+            <li>
+              Order ID: <%= order.order_id %><br>
+              Phone Number: <%= order.phone_number %><br>
+              Email: <%= order.email %><br>
+              <strong>Menu Items:</strong>
+              <ul>
+                <% order.menu_items.split(', ').forEach(menuItem => { %>
+                  <li><%= menuItem %></li>
+                <% }); %>
+              </ul>
+              Total: <%= order.total_cost %><br>
+              Status: <%= order.order_status %>
+            </li>
+          <% }); %>
+
+
+        </ul>
+      <% } else { %>
+        <p>No past orders available.</p>
+      <% } %>
+
+    </div>
 </body>
 
 </html>

@@ -13,20 +13,28 @@ router.get('/', (req, res) => {
           res.redirect("/restaurant-login");
           return;
         } else {
-          const templateVars = {
-            user: data[0] || null,
-          };
-          res.render("recentOrders", templateVars);
+          const restaurantId = data[0].id;
+          restaurantsQueries.getRecentOrdersForRestaurant(restaurantId)
+            .then(recentOrders => {
+              const templateVars = {
+                user: data[0] || null,
+                recentOrders: recentOrders.rows,
+              };
+              res.render("recentOrders", templateVars); 
+            })
+            .catch(err => {
+              res.status(500).json({ error: err.message });
+            });
         }
 
       })
       .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+        res.status(500).json({ error: err.message });
       });
 
   }
 });
 
 module.exports = router;
+
+
