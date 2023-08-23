@@ -32,7 +32,9 @@ VALUES
 INSERT INTO orders (restaurant_id, client_id, status_id, total)
 VALUES
   (1, 1, 1, 35.55),
+  (1, 1, 2, 25.55),
   (2, 2, 2, 54.99),
+  (2, 2, 1, 14.99),
   (1, 2, 3, 14.99),
   (1, 1, 3, 24.99),
   (2, 2, 3, 34.99),

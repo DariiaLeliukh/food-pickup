@@ -64,6 +64,26 @@ ORDER BY orders.order_date DESC;
   );
 };
 
+const getRecentOrdersForRestaurant = (restaurantId) => {
+  return db.query(
+    `
+    SELECT orders.id AS order_id, orders.client_id, orders.order_date,
+    statuses.status AS order_status,
+    STRING_AGG(menu_items.name || ' (Quantity: ' || order_items.quantity || ')', ', ') AS menu_items,
+           SUM(menu_items.price * order_items.quantity) AS total_cost,
+    clients.phone_number, clients.email
+    FROM orders
+    JOIN statuses ON orders.status_id = statuses.id
+    JOIN order_items ON orders.id = order_items.order_id
+    JOIN menu_items ON order_items.menu_items_id = menu_items.id
+    JOIN clients ON orders.client_id = clients.id
+    WHERE orders.restaurant_id = $1
+    AND statuses.status IN ('Pending', 'In Progress')
+    GROUP BY orders.id, clients.phone_number, clients.email, statuses.status, orders.order_date
+    ORDER BY orders.order_date DESC;
+    `,
+    [restaurantId]
+  );
+};
 
-
-module.exports = { getRestaurantByEmail, getRestaurantByID, getRestaurants, getMenu, getOrderStatus, getPastOrdersForRestaurant };
+module.exports = { getRestaurantByEmail, getRestaurantByID, getRestaurants, getMenu, getOrderStatus, getPastOrdersForRestaurant, getRecentOrdersForRestaurant };
