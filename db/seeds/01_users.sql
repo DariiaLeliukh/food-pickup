@@ -8,8 +8,8 @@ VALUES
 
 INSERT INTO restaurants (name, phone_number, email, address, image, operating_hours_start, operating_hours_end, password, rating)
 VALUES
-  ('Pizza Paradise', '123-456-789', 'info@pizzaparadise.com', '123 Main St, Vancouver', 'restaurant_image_url', '0900', '2200', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 5),
-  ('Pasta Palace', '123-456-798', 'info@pastapalace.com', '1 St, Victoria', 'restaurant_image_url', '1000', '2100', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 4);
+  ('Pizza Paradise', '123-456-789', 'info@pizzaparadise.com', '123 Main St, Vancouver', 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2016/1/25/0/FN_getty-italian-traditions-pasta_s4x3.jpg.rend.hgtvcom.616.462.suffix/1453776834832.jpeg', '0900', '2200', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 5),
+  ('Pasta Palace', '123-456-798', 'info@pastapalace.com', '1 St, Victoria', 'https://d2lswn7b0fl4u2.cloudfront.net/photos/pg-italian-dishes-1645372086.jpg', '1000', '2100', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 4);
 
 INSERT INTO menu_items (restaurant_id, name, price, description, image)
 VALUES

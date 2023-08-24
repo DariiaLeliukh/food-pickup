@@ -8,6 +8,7 @@
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
   <link rel="stylesheet" href="/styles/login.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <title>Login</title>
 
 </head>
@@ -17,31 +18,27 @@
 
 
 
-<div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Login</h5>
-      </div>
-      <div class="modal-body">
+    <div class="container">
+      <h1 class="text-center">Login</h1>
+
+      <div class="login-form">
         <form action="/restaurant-login" method="POST">
           <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Email</label>
-            <input name="email" type="email" class="form-control" id="formGroupExampleInput" placeholder="example@gmail.com">
+            <input name="email" type="email" class="form-control" id="formGroupExampleInput"
+              placeholder="example@gmail.com">
           </div>
           <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">Password</label>
-            <input name="password" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+            <input name="password" type="password" class="form-control" id="formGroupExampleInput2"
+              placeholder="Password">
           </div>
-          <div class="modal-footer">
-            <button class="btn btn-success" type="submit">Login</button>
-          </div>
+
+          <button class="btn" type="submit">Login</button>
+
         </form>
       </div>
-
     </div>
-  </div>
-</div>
 </body>
 
 </html>

@@ -2,3 +2,13 @@ body,
 html {
   margin: 0;
 }
+
+h1 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: #0C151D;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 44px;
+}

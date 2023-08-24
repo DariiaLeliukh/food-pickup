@@ -6,15 +6,12 @@
 */
 const createRestaurantElement = (data) => {
   const $restaurant = $(`
-    <article class="restaurant">
-      <header>
-      </header>
-      <div class="body">
-        <a href="/menu/${data.id}">${data.name}</a>
-      </div>
-      <footer>
-      </footer>
-    </article>
+  <div class="card col-12 col-md-6">
+  <img src="${data.image}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <a href="/menu/${data.id}" class="btn btn-primary">${data.name}</a>
+  </div>
+</div>
 `);
   return $restaurant;
 };

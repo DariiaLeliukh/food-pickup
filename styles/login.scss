@@ -1,12 +1,14 @@
-.modal {
-  display: block;
-  margin-top: 10%;
-}
+.login-form {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
 
-.modal-footer {
-  display: contents;
-}
-
-.modal-header {
-  justify-content: center;
+  button {
+    border-radius: 700px;
+    background: #084F20;
+    padding: 15px 30px;
+    margin: 0 auto;
+    display: flex;
+    color: #FFF;
+  }
 }

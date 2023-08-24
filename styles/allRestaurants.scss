@@ -1,0 +1,17 @@
+#restaurant-list {
+  .card {
+    padding: 0;
+
+    img {
+      height: 300px;
+      object-fit: cover;
+    }
+
+    a {
+      border-radius: 700px;
+      background: #084F20;
+      padding: 15px 30px;
+
+    }
+  }
+}
