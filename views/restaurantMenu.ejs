@@ -17,10 +17,17 @@
       background-color: #eee;
 
     }
-    .menu-container {
-      width: 100%;
+
+    #menu-cart {
       margin: auto;
+      display: flex;
+      flex-direction: row;
     }
+
+    .menu-container {
+      flex-grow: 1;
+    }
+
 
     .cover-photo {
       height: 7em;
@@ -52,11 +59,6 @@
       font-weight: bold;
     }
                   /* Menu items */
-
-    #menu-list {
-      width: 80%;
-      margin: auto;
-    }     
 
     #menu-list .item-photo {
       width: 10em;
@@ -102,6 +104,34 @@
       flex-direction: row;
     }
 
+    /* Cart */
+
+    #cart-container {
+      flex-grow: 4;
+      padding: 1em;
+      margin: 2em 1em;
+      border-radius: 10px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #cart-container label {
+      display: block;
+    }
+
+    #cart-container form input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid black;
+      margin-bottom: 1em;
+    }
+
+    #cart-container button {
+      display: block;
+      margin: auto;
+    }
+
   </style>
 </head>
 
@@ -110,59 +140,75 @@
     <div class="cover-photo">
       <img src="<%= restaurants[rId].image %>" alt="Restaurant'$ cover photo">
     </div>
-<!-- Main menu container -->
-    <div class="menu-container">
-      
-      <!-- Restauran header -->
-      <div class="restaurantHeader">
-        <h1><%= restaurants[rId].name %></h1>
-        <div class="restaurant-details">
-          <p class="rating">★ <%= restaurants[rId].rating %></p>
-          <p class="address"><%= restaurants[rId].address %></p>
-          <p class="opHours">
-            <% let startHour = restaurants[rId].operating_hours_start.toString() %>
-            <% let endHour = restaurants[rId].operating_hours_end.toString() %>
 
-            <%= startHour.slice(0,-2) + ':'+ startHour.slice(-2) %>
-             - 
-            <%= endHour.slice(0,-2) + ':' + endHour.slice(-2) %>            
-          </p>
-        </div>
+    <!-- Restauran header -->
+    <div class="restaurantHeader">
+      <h1><%= restaurants[rId].name %></h1>
+      <div class="restaurant-details">
+        <p class="rating">★ <%= restaurants[rId].rating %></p>
+        <p class="address"><%= restaurants[rId].address %></p>
+        <p class="opHours">
+          <% let startHour = restaurants[rId].operating_hours_start.toString() %>
+          <% let endHour = restaurants[rId].operating_hours_end.toString() %>
+    
+          <%= startHour.slice(0,-2) + ':'+ startHour.slice(-2) %>
+           - 
+          <%= endHour.slice(0,-2) + ':' + endHour.slice(-2) %>            
+        </p>
+      </div>
+    </div>
+
+    <div id="menu-cart">
+      <!-- Main menu container -->
+      <div class="menu-container">
+        <!-- Menu list -->
+        <section id="menu-list">
+          <% for(const element in menuItems) { %>
+            <article class="menu-item">
+              <div class="infoEvents">
+                <h2>
+                  <%= menuItems[element].name %>
+                </h2>
+                <p class="description">
+                  <%= menuItems[element].description %>
+                </p>
+                <p class="price">
+                  $<%= menuItems[element].price %>
+                </p>
+  
+                <div class="events">
+                  <form action="/cart" method="POST">
+                    <div class="quantity">
+                      <button>-</button>
+                      <p class="item-quantity">0</p>
+                      <button>+</button>
+                    </div>
+                    <button>Add to order</button>
+                  </form>
+                </div>
+              </div>
+              <!-- it would be nice to have alt attribute in db for each image  -->
+              <div class="item-photo">
+                <img src="<%= menuItems[element].image %>" alt="<%= menuItems[element].description %>">
+              </div>
+            </article>
+          <% } %>
+        </section>
       </div>
 
-      <!-- Menu list -->
-      <section id="menu-list">
-        <% for(const element in menuItems) { %>
-          <article class="menu-item">
-            <div class="infoEvents">
-              <h2>
-                <%= menuItems[element].name %>
-              </h2>
-              <p class="description">
-                <%= menuItems[element].description %>
-              </p>
-              <p class="price">
-                $<%= menuItems[element].price %>
-              </p>
+      <div id="cart-container">
+        <h2>Cart</h2>
+        <article id="cart-list">
+        </article>
+        <form action="/client-to-restaurant" method="post">
+          <label for="client-phone-number">
+            Enter phone number to make an order
+          </label>
+          <input type="tel" name="client-phone-number" id="client-phone-number">
+          <button type="submit">Place order</button>
+        </form>
+      </div>
 
-              <div class="events">
-                <form action="/cart" method="POST">
-                  <div class="quantity">
-                    <button>-</button>
-                    <p class="item-quantity">0</p>
-                    <button>+</button>
-                  </div>
-                  <button>Add to order</button>
-                </form>
-              </div>
-            </div>
-            <!-- it would be nice to have alt atribute in db for each image  -->
-            <div class="item-photo">
-              <img src="<%= menuItems[element].image %>" alt="<%= menuItems[element].description %>">
-            </div>
-          </article>
-        <% } %>
-      </section>
     </div>
 
 </body>

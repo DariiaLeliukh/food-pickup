@@ -1,4 +1,4 @@
 
-$(document).ready(function() {
-  console.log('from scripts load menu items');
-});
+// $(document).ready(function() {
+//   console.log('from scripts load menu items');
+// });
