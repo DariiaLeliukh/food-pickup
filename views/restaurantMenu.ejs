@@ -11,19 +11,204 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/menu.js"></script>
+  <style>
+
+    body {
+      background-color: #eee;
+
+    }
+
+    #menu-cart {
+      margin: auto;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .menu-container {
+      flex-grow: 1;
+    }
+
+
+    .cover-photo {
+      height: 7em;
+      overflow: hidden;
+    }
+    
+    .cover-photo img {
+      width: 100%;
+      top: -10em;
+      position: relative;
+    }
+                  /* Restaurant header  */
+    .restaurant-details {
+      display: flex;
+      flex-direction: row;
+      gap: 2em;
+    }
+
+    .restaurantHeader {
+      padding: 1em 2em;
+      background-color: white;
+    }
+
+    .restaurantHeader h1 {
+      font-size: large;
+    }
+
+    .address {
+      font-weight: bold;
+    }
+                  /* Menu items */
+
+    #menu-list .item-photo {
+      width: 10em;
+      height: 10em;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    #menu-list .item-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+    
+    .menu-item {
+      padding: 1em;
+      margin: 2em;
+      border-radius: 10px;
+      background-color: white;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: center;
+      overflow: hidden;
+    }
+
+    .description {
+      padding: 0 1em 0 0;
+    }
+
+    .infoEvents {
+      flex: 3;
+    }
+    
+    .events form {
+      width: 50%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .events .quantity {
+      display: flex;
+      flex-direction: row;
+    }
+
+    /* Cart */
+
+    #cart-container {
+      flex-grow: 4;
+      padding: 1em;
+      margin: 2em 1em;
+      border-radius: 10px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #cart-container label {
+      display: block;
+    }
+
+    #cart-container form input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid black;
+      margin-bottom: 1em;
+    }
+
+    #cart-container button {
+      display: block;
+      margin: auto;
+    }
+
+  </style>
 </head>
 
 <body>
   <%- include('partials/_header') %>
-    <div class="container">
-      <h1>Menu</h1>
-      <section id="menu-list">
-        <% for(const element in menuItems) { %>
-          <div class="col-8 col-md-4">
-            (<%= menuItems[element].name %>)
-          </div>
+    <div class="cover-photo">
+      <img src="<%= restaurants[rId].image %>" alt="Restaurant'$ cover photo">
+    </div>
+
+    <!-- Restauran header -->
+    <div class="restaurantHeader">
+      <h1><%= restaurants[rId].name %></h1>
+      <div class="restaurant-details">
+        <p class="rating">★ <%= restaurants[rId].rating %></p>
+        <p class="address"><%= restaurants[rId].address %></p>
+        <p class="opHours">
+          <% let startHour = restaurants[rId].operating_hours_start.toString() %>
+          <% let endHour = restaurants[rId].operating_hours_end.toString() %>
+    
+          <%= startHour.slice(0,-2) + ':'+ startHour.slice(-2) %>
+           - 
+          <%= endHour.slice(0,-2) + ':' + endHour.slice(-2) %>            
+        </p>
+      </div>
+    </div>
+
+    <div id="menu-cart">
+      <!-- Main menu container -->
+      <div class="menu-container">
+        <!-- Menu list -->
+        <section id="menu-list">
+          <% for(const element in menuItems) { %>
+            <article class="menu-item">
+              <div class="infoEvents">
+                <h2>
+                  <%= menuItems[element].name %>
+                </h2>
+                <p class="description">
+                  <%= menuItems[element].description %>
+                </p>
+                <p class="price">
+                  $<%= menuItems[element].price %>
+                </p>
+  
+                <div class="events">
+                  <form action="/cart" method="POST">
+                    <div class="quantity">
+                      <button>-</button>
+                      <p class="item-quantity">0</p>
+                      <button>+</button>
+                    </div>
+                    <button>Add to order</button>
+                  </form>
+                </div>
+              </div>
+              <!-- it would be nice to have alt attribute in db for each image  -->
+              <div class="item-photo">
+                <img src="<%= menuItems[element].image %>" alt="<%= menuItems[element].description %>">
+              </div>
+            </article>
           <% } %>
-      </section>
+        </section>
+      </div>
+
+      <div id="cart-container">
+        <h2>Cart</h2>
+        <article id="cart-list">
+        </article>
+        <form action="/client-to-restaurant" method="post">
+          <label for="client-phone-number">
+            Enter phone number to make an order
+          </label>
+          <input type="tel" name="client-phone-number" id="client-phone-number">
+          <button type="submit">Place order</button>
+        </form>
+      </div>
+
     </div>
 
 </body>
