@@ -164,7 +164,7 @@
         <!-- Menu list -->
         <section id="menu-list">
           <% for(const element in menuItems) { %>
-            <article class="menu-item">
+            <article class="menu-item" data-id="<%= menuItems[element].id %>">
               <div class="infoEvents">
                 <h2>
                   <%= menuItems[element].name %>
@@ -177,15 +177,14 @@
                 </p>
   
                 <div class="events">
-                  <form action="/cart" method="POST">
                     <div class="quantity">
-                      <button>-</button>
-                      <p class="item-quantity">0</p>
-                      <button>+</button>
+                      <button class="subtract">-</button>
+                      <p class="item-quantity">1</p>
+                      <button class="add">+</button>
                     </div>
-                    <button>Add to order</button>
-                  </form>
+                    <button class="add-to-order">Add to order</button>
                 </div>
+
               </div>
               <!-- it would be nice to have alt attribute in db for each image  -->
               <div class="item-photo">
@@ -204,7 +203,9 @@
           <label for="client-phone-number">
             Enter phone number to make an order
           </label>
-          <input type="tel" name="client-phone-number" id="client-phone-number">
+          <input required type="text" name="client-name" id="client-name" placeholder="name">
+          <input required type="tel" name="client-phone-number" id="client-phone-number" placeholder="telephone">
+          <input required type="email" name="client-email" id="client-email" placeholder="email">
           <button type="submit">Place order</button>
         </form>
       </div>
