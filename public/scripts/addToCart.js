@@ -14,7 +14,6 @@ $(document).ready(function() {
       existingItems.find('.totalPrice').text(newTotal);
       existingItems.find('.itemQuantity').text(newQuantity);
     } else {
-      const total = (itemPrice * itemQuantity) / 100;
       const $cartItem = $(`
       <div class="cart-item row" data-id="${menuItemId}">
         <div class="col-8">
@@ -30,7 +29,31 @@ $(document).ready(function() {
     `);
 
       $('#cart-list').append($cartItem);
+
+
     }
+    $cartTotalAmount = 0.0;
+    $('#cart-list').find('.cart-total').remove();
+
+    $('#cart-list').find('.totalPrice').each(function() {
+      $cartTotalAmount += parseFloat($(this).text());
+    });
+
+    const $cartTotal = $(`
+      <div class="row cart-total">
+        <div class="col-8">Total</div>
+        <div class="col-4">${$cartTotalAmount.toFixed(2)}</div>
+      <div>
+      `);
+    $('#cart-list').append($cartTotal);
+
+    //entering values for the form submission
+    const orderItems = {};
+    $(`.cart-item`).each(function() {
+      orderItems[$(this).data('id')] = $(this).find('.itemQuantity').text();
+    });
+    $('input#client-order-items').val(JSON.stringify(orderItems));
+    $('input#client-total').val($cartTotalAmount * 100);
   });
 
   // Increase quantity
