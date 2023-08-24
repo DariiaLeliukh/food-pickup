@@ -1,6 +1,7 @@
 body,
 html {
   margin: 0;
+  background: #F1F1F1;
 }
 
 h1 {
@@ -11,4 +12,19 @@ h1 {
   font-style: normal;
   font-weight: 400;
   line-height: 44px;
+}
+
+.order-item {
+  border-radius: 8px;
+  background: #FFF;
+  margin-bottom: 40px;
+  padding: 30px 50px;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+
+.recent-status {
+  text-align: right;
 }

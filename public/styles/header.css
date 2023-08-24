@@ -1,5 +1,33 @@
-.navbar-brand {
+header {
+  background: #FFF;
+}
+header .nav-link {
+  color: #425457;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-decoration-line: none;
+  text-transform: capitalize;
+}
+header .nav-link:hover {
+  color: #084F20;
+  text-decoration-line: underline;
+}
+header .navbar-brand {
   display: flex;
   color: #084F20;
   font-size: 36px;
+}
+header .navbar-brand:hover {
+  color: #084F20;
+}
+header .restaurant-logout {
+  border-radius: 700px;
+  background: #084F20;
+  padding: 15px 30px;
+  margin: 0 auto 0 15px;
+  display: inline-flex;
+  color: #FFF;
 }
