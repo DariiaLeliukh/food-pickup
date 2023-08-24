@@ -13,15 +13,15 @@ VALUES
 
 INSERT INTO menu_items (restaurant_id, name, price, description, image)
 VALUES
-(1, 'PASTA', 15, 'Spaghetti bolognese - traditional italian pasta', 'https://media.istockphoto.com/id/544990588/photo/spaghetti-bolognese-on-dark-background.jpg?s=2048x2048&w=is&k=20&c=SBXtgdzzfO9uSuFoYskHG6fvNxBkwKDXw-XxU0g7Np0=');
+(1, 'PASTA', 1500, 'Spaghetti bolognese - traditional italian pasta', 'https://media.istockphoto.com/id/544990588/photo/spaghetti-bolognese-on-dark-background.jpg?s=2048x2048&w=is&k=20&c=SBXtgdzzfO9uSuFoYskHG6fvNxBkwKDXw-XxU0g7Np0=');
 
 INSERT INTO menu_items (restaurant_id, name, price, description, image)
 VALUES
-(1, 'PIZZA', 20, 'Hawaiian Chicken PizzaSmoked', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1981&q=80');
+(1, 'PIZZA', 2000, 'Hawaiian Chicken PizzaSmoked', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1981&q=80');
 
 INSERT INTO menu_items (restaurant_id, name, price, description, image)
 VALUES
-(2, 'LASAGNA', 18, 'Protein rich Lasagna Vegan Italian food plant-based recipe Mediterranean diet with ingredients such as Lasagna pasta, onion, mushrooms, zucchini, bell pepper, spinach, vegan marinara sauce, tomatoes, firm tofu, chickpeas, vegan cheese', 'https://media.istockphoto.com/id/1365127906/photo/protein-rich-lasagna-vegan-italian-food-plant-based-recipe-medit.jpg?s=2048x2048&w=is&k=20&c=RaSMjPx9vS_6i0_mpOC0CdD9LMmkW_NlCWOeqFWYSvg=');
+(2, 'LASAGNA', 1800, 'Protein rich Lasagna Vegan Italian food plant-based recipe Mediterranean diet with ingredients such as Lasagna pasta, onion, mushrooms, zucchini, bell pepper, spinach, vegan marinara sauce, tomatoes, firm tofu, chickpeas, vegan cheese', 'https://media.istockphoto.com/id/1365127906/photo/protein-rich-lasagna-vegan-italian-food-plant-based-recipe-medit.jpg?s=2048x2048&w=is&k=20&c=RaSMjPx9vS_6i0_mpOC0CdD9LMmkW_NlCWOeqFWYSvg=');
 
 INSERT INTO statuses (status)
 VALUES

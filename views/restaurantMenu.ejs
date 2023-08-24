@@ -10,9 +10,8 @@
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/menu.js"></script>
+  <script defer src="/scripts/addToCart.js"></script>
   <style>
-
     body {
       background-color: #eee;
 
@@ -33,13 +32,14 @@
       height: 7em;
       overflow: hidden;
     }
-    
+
     .cover-photo img {
       width: 100%;
       top: -10em;
       position: relative;
     }
-                  /* Restaurant header  */
+
+    /* Restaurant header  */
     .restaurant-details {
       display: flex;
       flex-direction: row;
@@ -58,7 +58,8 @@
     .address {
       font-weight: bold;
     }
-                  /* Menu items */
+
+    /* Menu items */
 
     #menu-list .item-photo {
       width: 10em;
@@ -66,15 +67,16 @@
       border-radius: 10px;
       overflow: hidden;
     }
+
     #menu-list .item-photo img {
       width: 100%;
       height: 100%;
       object-fit: fill;
     }
-    
+
     .menu-item {
       padding: 1em;
-      margin: 2em;
+      margin-bottom: 50px;
       border-radius: 10px;
       background-color: white;
       display: flex;
@@ -91,7 +93,7 @@
     .infoEvents {
       flex: 3;
     }
-    
+
     .events form {
       width: 50%;
       display: flex;
@@ -106,111 +108,113 @@
 
     /* Cart */
 
-    #cart-container {
-      flex-grow: 4;
+    .cart-container {
       padding: 1em;
-      margin: 2em 1em;
       border-radius: 10px;
       background-color: white;
-      display: flex;
-      flex-direction: column;
     }
 
-    #cart-container label {
+    .cart-container label {
       display: block;
     }
 
-    #cart-container form input {
+    .cart-container form input {
       width: 100%;
       border: none;
       border-bottom: 1px solid black;
       margin-bottom: 1em;
     }
 
-    #cart-container button {
+    .cart-container button {
       display: block;
       margin: auto;
     }
-
   </style>
 </head>
 
 <body>
   <%- include('partials/_header') %>
     <div class="cover-photo">
-      <img src="<%= restaurants[rId].image %>" alt="Restaurant'$ cover photo">
+      <img src="<%= restaurants[rId].image %>" alt="Restaurant cover photo">
     </div>
 
     <!-- Restauran header -->
     <div class="restaurantHeader">
-      <h1><%= restaurants[rId].name %></h1>
+      <h1>
+        <%= restaurants[rId].name %>
+      </h1>
       <div class="restaurant-details">
-        <p class="rating">★ <%= restaurants[rId].rating %></p>
-        <p class="address"><%= restaurants[rId].address %></p>
+        <p class="rating">★ <%= restaurants[rId].rating %>
+        </p>
+        <p class="address">
+          <%= restaurants[rId].address %>
+        </p>
         <p class="opHours">
-          <% let startHour = restaurants[rId].operating_hours_start.toString() %>
-          <% let endHour = restaurants[rId].operating_hours_end.toString() %>
-    
-          <%= startHour.slice(0,-2) + ':'+ startHour.slice(-2) %>
-           - 
-          <%= endHour.slice(0,-2) + ':' + endHour.slice(-2) %>            
+          <% let startHour=restaurants[rId].operating_hours_start.toString() %>
+            <% let endHour=restaurants[rId].operating_hours_end.toString() %>
+
+              <%= startHour.slice(0,-2) + ':' + startHour.slice(-2) %>
+                -
+                <%= endHour.slice(0,-2) + ':' + endHour.slice(-2) %>
         </p>
       </div>
     </div>
 
-    <div id="menu-cart">
-      <!-- Main menu container -->
-      <div class="menu-container">
-        <!-- Menu list -->
-        <section id="menu-list">
+    <div class="container mt-5">
+      <div class="row">
+        <!-- Main menu container -->
+        <div class="menu-container col-12 col-md-8" id="menu-list">
+          <!-- Menu list -->
           <% for(const element in menuItems) { %>
-            <article class="menu-item">
+            <article class="menu-item" data-id="<%= menuItems[element].id %>">
               <div class="infoEvents">
-                <h2>
+                <h2 class="item-name">
                   <%= menuItems[element].name %>
                 </h2>
                 <p class="description">
                   <%= menuItems[element].description %>
                 </p>
                 <p class="price">
-                  $<%= menuItems[element].price %>
+                  $<%= (menuItems[element].price/100).toFixed(2) %>
                 </p>
-  
+
                 <div class="events">
-                  <form action="/cart" method="POST">
-                    <div class="quantity">
-                      <button>-</button>
-                      <p class="item-quantity">0</p>
-                      <button>+</button>
-                    </div>
-                    <button>Add to order</button>
-                  </form>
+                  <div class="quantity">
+                    <button class="subtract">-</button>
+                    <p class="item-quantity">1</p>
+                    <button class="add">+</button>
+                  </div>
+                  <button class="add-to-order">Add to order</button>
                 </div>
+
               </div>
               <!-- it would be nice to have alt attribute in db for each image  -->
               <div class="item-photo">
                 <img src="<%= menuItems[element].image %>" alt="<%= menuItems[element].description %>">
               </div>
             </article>
-          <% } %>
-        </section>
-      </div>
+            <% } %>
+        </div>
 
-      <div id="cart-container">
-        <h2>Cart</h2>
-        <article id="cart-list">
-        </article>
-        <form action="/client-to-restaurant" method="post">
-          <label for="client-phone-number">
-            Enter phone number to make an order
-          </label>
-          <input type="tel" name="client-phone-number" id="client-phone-number">
-          <button type="submit">Place order</button>
-        </form>
+        <div class="cart-container col-12 col-md-4">
+          <h2>Cart</h2>
+          <div id="cart-list">
+          </div>
+          <form action="/checkout" method="post">
+            <label for="client-phone-number">
+              Enter phone number to make an order
+            </label>
+            <input required type="text" name="clientName" id="client-name" placeholder="name">
+            <input required type="tel" name="clientPhoneNumber" id="client-phone-number" placeholder="telephone">
+            <input required type="email" name="clientEmail" id="client-email" placeholder="email">
+            <input required type="hidden" name="clientOrderItems" id="client-order-items">
+            <input required type="hidden" name="clientTotal" id="client-total">
+            <input required type="hidden" name="restaurantId" id="restaurant-id" value="<%= restaurants[rId].id %>">
+            <button type="submit">Place order</button>
+          </form>
+        </div>
       </div>
-
     </div>
-
 </body>
 
 </html>
