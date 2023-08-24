@@ -20,10 +20,14 @@
       <div id="recent-orders">
         <% if (recentOrders && recentOrders.length> 0) { %>
           <% recentOrders.forEach(order=> { %>
-            <div class="order-item">
-              <div class="col-6">
+            <div class="order-item row">
+              <div class="col-6 order-id">
                 Order ID: <%= order.order_id %><br>
               </div>
+              <div class="col-6 text-right current-status">
+                <%= order.order_status %>
+              </div>
+
               <div class="col-12">
                 <p class="phone-number">
                   <%= order.phone_number %>
@@ -32,25 +36,31 @@
                   <%= order.email %>
                 </p>
               </div>
-              <div class="col-8">
-                <% order.menu_items.split(', ').forEach(menuItem => { %>
-                <div class="order-item">
-                  <div class="col-8 underlined">
-                    <%= menuItem %>
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-8 order-info">
+                    <% order.menu_items.split(', ').forEach(menuItem => { %>
+                    <div class="order-item">
+                      <div class="col-12">
+                        <%= menuItem %>
+                      </div>
+                    </div>
+                    <% }); %>
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-8">
+                          Total:
+                        </div>
+                        <div class="col-4 text-right">
+                          $<%= order.total_cost %>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
-                  <div class="col-4"></div>
+                  <div class="col-4 change-status"></div>
                 </div>
-                <% }); %>
               </div>
-              <div class="col-6">
-                Total:
-              </div>
-              <div class="col-2">
-                $<%= order.total_cost %>
-              </div>
-              <div class="recent-status">
-              Status: <%= order.order_status %>
-            </div>
             </div>
           <% }); %>
       <% } else { %>

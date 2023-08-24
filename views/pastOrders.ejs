@@ -21,11 +21,11 @@
         <% if (pastOrders && pastOrders.length> 0) { %>
           <% pastOrders.forEach(order=> { %>
             <div class="order-item row">
-              <div class="col-6">
+              <div class="col-6 order-id">
                 Order ID: <%= order.order_id %><br>
               </div>
-              <div class="col-6 text-right">
-                Status: <%= order.order_status %>
+              <div class="col-6 text-right current-status">
+                <%= order.order_status %>
               </div>
               <div class="col-12">
                 <p class="phone-number">
@@ -38,7 +38,7 @@
               <div class="col-8">
                 <% order.menu_items.split(', ').forEach(menuItem => { %>
                 <div class="order-item">
-                  <div class="col-8 underlined">
+                  <div class="col-8">
                     <%= menuItem %>
                   </div>
                   <div class="col-4"></div>
