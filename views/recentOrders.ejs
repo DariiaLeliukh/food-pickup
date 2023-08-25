@@ -39,37 +39,41 @@
               <div class="col-12">
                 <div class="row">
                   <div class="col-8 order-info">
-                    <% order.menu_items.split(', ').forEach(menuItem => { %>
-                    <div class="order-item">
-                      <div class="col-12">
-                        <%= menuItem %>
-                      </div>
-                    </div>
-                    <% }); %>
-                    <div class="col-12">
-                      <div class="row">
-                        <div class="col-8">
-                          Total:
+                    <% order.menu_items %>
+                      <% for(const key in order.menu_items) { %>
+                        <div class="order-item row">
+                          <div class="col-6">
+                            <%= key %>
+                          </div>
+                          <div class="col-6">
+                            <%= order.menu_items[key]%>
+                          </div>
                         </div>
-                        <div class="col-4 text-right">
-                          $<%= order.total_cost %>
-                        </div>
-                      </div>
-                    </div>
+                        <% }; %>
+                          <div class="col-12">
+                            <div class="row">
+                              <div class="col-8">
+                                Total:
+                              </div>
+                              <div class="col-4 text-right">
+                                $<%= order.total_cost %>
+                              </div>
+                            </div>
+                          </div>
 
                   </div>
                   <div class="col-4 change-status"></div>
                 </div>
               </div>
             </div>
-          <% }); %>
-      <% } else { %>
-        <p>No recent orders available.</p>
-      <% } %>
+            <% }); %>
+              <% } else { %>
+                <p>No recent orders available.</p>
+                <% } %>
 
 
+      </div>
     </div>
-  </div>
 </body>
 
 </html>

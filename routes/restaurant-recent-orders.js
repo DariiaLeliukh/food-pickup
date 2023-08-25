@@ -16,11 +16,15 @@ router.get('/', (req, res) => {
           const restaurantId = data[0].id;
           restaurantsQueries.getRecentOrdersForRestaurant(restaurantId)
             .then(recentOrders => {
+              for (let element of recentOrders.rows) {
+                element.menu_items = "{" + element.menu_items + "}";
+                element.menu_items = JSON.parse(element.menu_items)
+              }
               const templateVars = {
                 user: data[0] || null,
                 recentOrders: recentOrders.rows,
               };
-              res.render("recentOrders", templateVars); 
+              res.render("recentOrders", templateVars);
             })
             .catch(err => {
               res.status(500).json({ error: err.message });

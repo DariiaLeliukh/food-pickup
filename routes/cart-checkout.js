@@ -6,7 +6,6 @@ const userQueries = require('../db/queries/users');
 //TODO for each query check if data exists at all
 
 router.post("/", (req, res) => {
-  console.log(req.body);
 
   const { clientName, clientPhoneNumber, clientEmail, clientOrderItems, clientTotal, restaurantId } = req.body;
   let userID;

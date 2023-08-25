@@ -47,7 +47,7 @@ const getPastOrdersForRestaurant = (restaurantId) => {
     `
     SELECT orders.id AS order_id, orders.client_id, orders.order_date,
     statuses.status AS order_status,
-    STRING_AGG(menu_items.name || ' (Quantity: ' || order_items.quantity || ')', ', ') AS menu_items,
+    STRING_AGG(' "' || menu_items.name || '" : "' || order_items.quantity || '"', ', ') AS menu_items,
     SUM(menu_items.price * order_items.quantity) AS total_cost,
     clients.phone_number, clients.email
 FROM orders
@@ -69,7 +69,7 @@ const getRecentOrdersForRestaurant = (restaurantId) => {
     `
     SELECT orders.id AS order_id, orders.client_id, orders.order_date,
     statuses.status AS order_status,
-    STRING_AGG(menu_items.name || ' (Quantity: ' || order_items.quantity || ')', ', ') AS menu_items,
+    STRING_AGG(' "' || menu_items.name || '" : "' || order_items.quantity || '"', ', ') AS menu_items,
            SUM(menu_items.price * order_items.quantity) AS total_cost,
     clients.phone_number, clients.email
     FROM orders
