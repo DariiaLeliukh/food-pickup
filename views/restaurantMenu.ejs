@@ -8,7 +8,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
-
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/menu.js"></script>
   <style>
@@ -33,7 +33,7 @@
       height: 7em;
       overflow: hidden;
     }
-    
+
     .cover-photo img {
       width: 100%;
       top: -10em;
@@ -71,7 +71,7 @@
       height: 100%;
       object-fit: fill;
     }
-    
+
     .menu-item {
       padding: 1em;
       margin: 2em;
@@ -91,7 +91,7 @@
     .infoEvents {
       flex: 3;
     }
-    
+
     .events form {
       width: 50%;
       display: flex;
@@ -150,10 +150,10 @@
         <p class="opHours">
           <% let startHour = restaurants[rId].operating_hours_start.toString() %>
           <% let endHour = restaurants[rId].operating_hours_end.toString() %>
-    
+
           <%= startHour.slice(0,-2) + ':'+ startHour.slice(-2) %>
-           - 
-          <%= endHour.slice(0,-2) + ':' + endHour.slice(-2) %>            
+           -
+          <%= endHour.slice(0,-2) + ':' + endHour.slice(-2) %>
         </p>
       </div>
     </div>
@@ -175,7 +175,7 @@
                 <p class="price">
                   $<%= menuItems[element].price %>
                 </p>
-  
+
                 <div class="events">
                   <form action="/cart" method="POST">
                     <div class="quantity">
