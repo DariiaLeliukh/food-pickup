@@ -1,10 +1,10 @@
 INSERT INTO clients (name, email, phone_number)
 VALUES
-  ('Marina Ivanova', 'marina.ivanova.ca@gmail.com', '587-586-3337');
+  ('Marina Ivanova', 'marina.ivanova.ca@gmail.com', '+12045838224');
 
 INSERT INTO clients (name, email, phone_number)
 VALUES
-  ('Dariia L', 'dariial@gmail.com', '123-456-4545');
+  ('Dariia L', 'dariial@gmail.com', '+12045838224');
 
 INSERT INTO restaurants (name, phone_number, email, address, image, operating_hours_start, operating_hours_end, password, rating)
 VALUES
