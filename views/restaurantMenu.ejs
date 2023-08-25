@@ -135,23 +135,23 @@
 <body>
   <%- include('partials/_header') %>
     <div class="cover-photo">
-      <img src="<%= restaurants[rId].image %>" alt="Restaurant cover photo">
+      <img src="<%= restaurantInfo.image %>" alt="Restaurant cover photo">
     </div>
 
     <!-- Restauran header -->
     <div class="restaurantHeader">
       <h1>
-        <%= restaurants[rId].name %>
+        <%= restaurantInfo.name %>
       </h1>
       <div class="restaurant-details">
-        <p class="rating">★ <%= restaurants[rId].rating %>
+        <p class="rating">★ <%= restaurantInfo.rating %>
         </p>
         <p class="address">
-          <%= restaurants[rId].address %>
+          <%= restaurantInfo.address %>
         </p>
         <p class="opHours">
-          <% let startHour=restaurants[rId].operating_hours_start.toString() %>
-            <% let endHour=restaurants[rId].operating_hours_end.toString() %>
+          <% let startHour=restaurantInfo.operating_hours_start.toString() %>
+            <% let endHour=restaurantInfo.operating_hours_end.toString() %>
 
               <%= startHour.slice(0,-2) + ':' + startHour.slice(-2) %>
                 -
@@ -209,7 +209,7 @@
             <input required type="email" name="clientEmail" id="client-email" placeholder="email">
             <input required type="hidden" name="clientOrderItems" id="client-order-items">
             <input required type="hidden" name="clientTotal" id="client-total">
-            <input required type="hidden" name="restaurantId" id="restaurant-id" value="<%= restaurants[rId].id %>">
+            <input required type="hidden" name="restaurantId" id="restaurant-id" value="<%= restaurantInfo.id %>">
             <button type="submit">Place order</button>
           </form>
         </div>

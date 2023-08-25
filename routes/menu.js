@@ -4,16 +4,18 @@ const restaurantQueries = require('../db/queries/restaurants');
 
 router.get('/:id', (req, res) => {
   const restaurantId = req.params.id;
-  Promise.all([
-    restaurantQueries.getMenu(restaurantId),
-    restaurantQueries.getRestaurants()
-  ])
+  let restaurantInfo = {};
+  let menuItems = {};
+  restaurantQueries.getRestaurantByID(restaurantId)
     .then(results => {
-      console.log(restaurantId);
-      const menuItems = results[0];
-      const restaurants = results[1];
-      const rId = restaurantId - 1;
-      res.render('restaurantMenu', { menuItems, restaurants, rId });
+      restaurantInfo = results[0];
+    })
+    .then(() => {
+      return restaurantQueries.getMenu(restaurantId);
+    })
+    .then((results) => {
+      menuItems = results;
+      res.render('restaurantMenu', { menuItems, restaurantInfo });
     })
     .catch(err => {
       res
