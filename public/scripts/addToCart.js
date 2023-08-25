@@ -64,7 +64,6 @@ $(document).ready(function() {
 
   // Decrease quantity
   $('.quantity .subtract').on('click', function() {
-    console.log('subtract');
     let quantity = $(this).closest('.quantity').find('.item-quantity');
     if (parseInt(quantity.text()) !== 1) {
       quantity.text(parseInt(quantity.text()) - 1);

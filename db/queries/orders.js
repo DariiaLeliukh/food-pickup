@@ -5,6 +5,7 @@ const addOrder = (restaurant_id, client_id, total) => {
     .then(data => {
       return data.rows;
     });
+
 };
 
 const addOrderItems = (order, orderId) => {
@@ -46,5 +47,12 @@ const updateOrder = (status, orderId) => {
     });
 }
 
+const getUserbyOrderId = (orderId) => {
+  return db.query("SELECT * FROM orders JOIN clients ON orders.client_id = clients.id WHERE orders.id = $1;", [orderId])
+    .then(data => {
+      return data.rows[0];
+    });
+}
 
-module.exports = { addOrder, addOrderItems, updateOrder };
+
+module.exports = { addOrder, addOrderItems, updateOrder, getUserbyOrderId };
