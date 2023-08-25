@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
             .then(recentOrders => {
               for (let element of recentOrders.rows) {
                 element.menu_items = "{" + element.menu_items + "}";
-                element.menu_items = JSON.parse(element.menu_items)
+                element.menu_items = JSON.parse(element.menu_items);
               }
               const templateVars = {
                 user: data[0] || null,
