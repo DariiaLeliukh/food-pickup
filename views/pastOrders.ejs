@@ -36,14 +36,18 @@
                 </p>
               </div>
               <div class="col-8">
-                <% order.menu_items.split(', ').forEach(menuItem => { %>
-                <div class="order-item">
-                  <div class="col-8">
-                    <%= menuItem %>
+                <% for(const key in order.menu_items) { %>
+                  <div class="order-item row">
+                    <div class="col-6">
+                      <%= key %>
+                    </div>
+                    <div class="col-6">
+                      <%= order.menu_items[key]%>
+                    </div>
+
                   </div>
-                  <div class="col-4"></div>
-                </div>
-                <% }); %>
+                  <% }; %>
+                    <div class="col-4"></div>
               </div>
               <div class="col-6">
                 Total:
@@ -52,11 +56,11 @@
                 $<%= order.total_cost %>
               </div>
             </div>
-          <% }); %>
-      <% } else { %>
-        <p>No past orders available.</p>
-      <% } %>
-    </div>
+            <% }); %>
+              <% } else { %>
+                <p>No past orders available.</p>
+                <% } %>
+      </div>
     </div>
 </body>
 

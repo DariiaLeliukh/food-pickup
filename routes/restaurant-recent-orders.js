@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
               for (let element of recentOrders.rows) {
                 element.menu_items = "{" + element.menu_items + "}";
                 element.menu_items = JSON.parse(element.menu_items);
+                element.total_cost = (element.total_cost / 100).toFixed(2);
               }
               const templateVars = {
                 user: data[0] || null,

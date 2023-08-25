@@ -17,17 +17,22 @@ router.get('/', (req, res) => {
           const restaurantId = data[0].id;
           restaurantsQueries.getPastOrdersForRestaurant(restaurantId)
             .then(pastOrders => {
+              for (let element of pastOrders.rows) {
+                element.menu_items = "{" + element.menu_items + "}";
+                element.menu_items = JSON.parse(element.menu_items);
+                element.total_cost = (element.total_cost / 100).toFixed(2);
+              }
               const templateVars = {
                 user: data[0] || null,
                 pastOrders: pastOrders.rows,
               };
-          res.render("pastOrders", templateVars);
-        })
-        .catch(err => {
-          res.status(500).json({ error: err.message });
-      });
-    }
-  })
+              res.render("pastOrders", templateVars);
+            })
+            .catch(err => {
+              res.status(500).json({ error: err.message });
+            });
+        }
+      })
 
       .catch(err => {
         res
