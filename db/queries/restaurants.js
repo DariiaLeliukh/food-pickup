@@ -80,7 +80,7 @@ const getRecentOrdersForRestaurant = (restaurantId) => {
     WHERE orders.restaurant_id = $1
     AND statuses.status IN ('Pending', 'In Progress')
     GROUP BY orders.id, clients.phone_number, clients.email, statuses.status, orders.order_date
-    ORDER BY orders.order_date DESC;
+    ORDER BY order_status DESC;
     `,
     [restaurantId]
   );

@@ -39,6 +39,12 @@ const addOrderItems = (order, orderId) => {
     });
 };
 
+const updateOrder = (status, orderId) => {
+  return db.query("UPDATE orders SET status_id = $1 WHERE id = $2 RETURNING *;", [status, orderId])
+    .then(data => {
+      return data.rows;
+    });
+}
 
 
-module.exports = { addOrder, addOrderItems };
+module.exports = { addOrder, addOrderItems, updateOrder };
