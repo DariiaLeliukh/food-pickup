@@ -11,21 +11,26 @@
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/menu.css" type="text/css" />
     <title>Order Status</title>
   </head>
 
 <body>
   <%- include('partials/_header') %>
-    <h1>Order Status</h1>
-    <% if (status) { %>
-      <p>Order ID: <%= status.id %>
-      </p>
-      <p>Status: <%= status.status %>
-      </p>
+    <div class="container">
+      <div class="order-status">
+        <h1>Order Status</h1>
+        <% if (status) { %>
+          <p>Order ID: <%= status.id %>
+          </p>
+          <p>Status: <%= status.status %>
+          </p>
 
-      <% } else { %>
-        <p>No order status available.</p>
-        <% } %>
+          <% } else { %>
+            <p>No order status available.</p>
+            <% } %>
+      </div>
+    </div>
 </body>
 
 </html>

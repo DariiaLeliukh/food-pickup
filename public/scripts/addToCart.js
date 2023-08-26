@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  $('.add-to-order').on('click', function() {
+$(document).ready(function () {
+  $('.add-to-order').on('click', function () {
 
     const menuItemId = $(this).closest('.menu-item').data('id');
     const itemName = $(this).closest('.menu-item').find('.item-name').text();
@@ -19,10 +19,10 @@ $(document).ready(function() {
         <div class="col-8">
           <p class="itemName">${itemName}</p>
         </div>
-        <div class="col-4">
+        <div class="col-4 text-right">
           <p class="itemQuantity">${itemQuantity}</p>
         </div>
-        <div class="col-12">
+        <div class="col-12 text-right">
           <p class="totalPrice">${(itemPrice * itemQuantity).toFixed(2)}</p>
         </div>
       </div>
@@ -35,21 +35,21 @@ $(document).ready(function() {
     $cartTotalAmount = 0.0;
     $('#cart-list').find('.cart-total').remove();
 
-    $('#cart-list').find('.totalPrice').each(function() {
+    $('#cart-list').find('.totalPrice').each(function () {
       $cartTotalAmount += parseFloat($(this).text());
     });
 
     const $cartTotal = $(`
       <div class="row cart-total">
         <div class="col-8">Total</div>
-        <div class="col-4">${$cartTotalAmount.toFixed(2)}</div>
+        <div class="col-4 text-right">${$cartTotalAmount.toFixed(2)}</div>
       <div>
       `);
     $('#cart-list').append($cartTotal);
 
     //entering values for the form submission
     const orderItems = {};
-    $(`.cart-item`).each(function() {
+    $(`.cart-item`).each(function () {
       orderItems[$(this).data('id')] = $(this).find('.itemQuantity').text();
     });
     $('input#client-order-items').val(JSON.stringify(orderItems));
@@ -57,13 +57,13 @@ $(document).ready(function() {
   });
 
   // Increase quantity
-  $('.quantity .add').on('click', function() {
+  $('.quantity .add').on('click', function () {
     let quantity = $(this).closest('.quantity').find('.item-quantity');
     quantity.text(parseInt(quantity.text()) + 1);
   });
 
   // Decrease quantity
-  $('.quantity .subtract').on('click', function() {
+  $('.quantity .subtract').on('click', function () {
     let quantity = $(this).closest('.quantity').find('.item-quantity');
     if (parseInt(quantity.text()) !== 1) {
       quantity.text(parseInt(quantity.text()) - 1);
