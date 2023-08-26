@@ -9,4 +9,10 @@
   border-radius: 700px;
   background: #084F20;
   padding: 15px 30px;
+  border: 1px solid #084F20;
+}
+#restaurant-list .card a:hover, #restaurant-list .card a:focus {
+  background: #fff;
+  color: #084F20;
+  box-shadow: none;
 }

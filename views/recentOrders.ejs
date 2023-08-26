@@ -65,14 +65,17 @@
                   </div>
                   <div class="col-4 change-status align-items-center d-flex justify-content-center">
                     <form action="/change-status" method="post" class="changeStatus">
-                      <select class="statusList" name="status">
+                      <p>Change Status</p>
+                      <% let statusClass=order.order_status.replace(" ", "") %>
+                      <select class=" statusList <%=statusClass %>" name="status">
                         <option <% if (order.order_status==="Pending" ) { %> selected <% } %> value="1">Pending</option>
                         <option <% if (order.order_status==="In Progress" ) { %> selected <% } %> value="2">In progress
                         </option>
-                        <option <% if (order.order_status==="Completed" ) { %> selected <% } %> value="3">Complete
+                        <option <% if (order.order_status==="Completed" ) { %> selected class="completed" <% } %>
+                            value="3">Complete
                         </option>
-                      </select>
-                      <input type="hidden" name='orderId' value="<%= order.order_id %>">
+                        </select>
+                        <input type="hidden" name='orderId' value="<%= order.order_id %>">
                     </form>
                   </div>
                 </div>

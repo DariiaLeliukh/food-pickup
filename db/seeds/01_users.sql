@@ -8,20 +8,20 @@ VALUES
 
 INSERT INTO restaurants (name, phone_number, email, address, image, operating_hours_start, operating_hours_end, password, rating)
 VALUES
-  ('Pizza Paradise', '+12045838224', 'info@pizzaparadise.com', '123 Main St, Vancouver', 'https://media.istockphoto.com/id/1301966124/photo/italian-lunch.jpg?s=1024x1024&w=is&k=20&c=1YRYFdYW-cl2u8bRDDbki2uqti2D4-psG1x93ptdbp0=', '0900', '2200', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 5),
-  ('Pasta Palace', '+12045838224', 'info@pastapalace.com', '1 St, Victoria', 'https://media.istockphoto.com/id/480603736/photo/pot-to-heat.jpg?s=1024x1024&w=is&k=20&c=BJoigQ_-x2ANsfh-A_8l9U06SKrDX5rIBAhvu5ppiMk=', '1000', '2100', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 4);
+  ('Pizza Paradise', '+12045838224', 'info@pizzaparadise.com', '123 Main St, Vancouver', 'https://www.hotelmousai.com/blog/wp-content/uploads/2021/12/Top-10-Traditional-Foods-in-Italy.jpg', '0900', '2200', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 5),
+  ('Pasta Palace', '+12045838224', 'info@pastapalace.com', '1 St, Victoria', 'https://haidasandwich.ca/wp-content/uploads/2019/12/Italian-Food.jpg', '1000', '2100', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 4);
 
 INSERT INTO menu_items (restaurant_id, name, price, description, image)
 VALUES
-(1, 'PASTA', 1500, 'Spaghetti bolognese - traditional italian pasta', 'https://media.istockphoto.com/id/544990588/photo/spaghetti-bolognese-on-dark-background.jpg?s=2048x2048&w=is&k=20&c=SBXtgdzzfO9uSuFoYskHG6fvNxBkwKDXw-XxU0g7Np0=');
+(1, 'Pasta', 1500, 'Spaghetti bolognese - traditional italian pasta', 'https://www.foodrepublic.com/img/gallery/100-italian-fooddrink-words-and-phrases/intro-1684783348.jpg');
 
 INSERT INTO menu_items (restaurant_id, name, price, description, image)
 VALUES
-(1, 'PIZZA', 2000, 'Hawaiian Chicken PizzaSmoked', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1981&q=80');
+(1, 'Pizza', 2000, 'Hawaiian Chicken PizzaSmoked', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1981&q=80');
 
 INSERT INTO menu_items (restaurant_id, name, price, description, image)
 VALUES
-(2, 'LASAGNA', 1800, 'Protein rich Lasagna Vegan Italian food plant-based recipe Mediterranean diet with ingredients such as Lasagna pasta, onion, mushrooms, zucchini, bell pepper, spinach, vegan marinara sauce, tomatoes, firm tofu, chickpeas, vegan cheese', 'https://media.istockphoto.com/id/1365127906/photo/protein-rich-lasagna-vegan-italian-food-plant-based-recipe-medit.jpg?s=2048x2048&w=is&k=20&c=RaSMjPx9vS_6i0_mpOC0CdD9LMmkW_NlCWOeqFWYSvg=');
+(2, 'Lasagna', 1800, 'Protein rich Lasagna Vegan Italian food plant-based recipe Mediterranean diet with ingredients such as Lasagna pasta, onion, mushrooms, zucchini, bell pepper, spinach, vegan marinara sauce, tomatoes, firm tofu, chickpeas, vegan cheese', 'https://insanelygoodrecipes.com/wp-content/uploads/2020/03/Lasagna-1024x536.png');
 
 INSERT INTO statuses (status)
 VALUES

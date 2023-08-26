@@ -30,4 +30,10 @@ header .restaurant-logout {
   margin: 0 auto 0 15px;
   display: inline-flex;
   color: #FFF;
+  border: 1px solid #084F20;
+}
+header .restaurant-logout:hover, header .restaurant-logout:focus {
+  background: #fff;
+  color: #084F20;
+  box-shadow: none;
 }

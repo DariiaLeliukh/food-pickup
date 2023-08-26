@@ -3,6 +3,14 @@
   width: 100%;
   margin: 0 auto;
 
+  input {
+    &:focus {
+      box-shadow: none;
+      border-color: #084F20;
+
+    }
+  }
+
   button {
     border-radius: 700px;
     background: #084F20;
@@ -10,5 +18,13 @@
     margin: 0 auto;
     display: flex;
     color: #FFF;
+    border: 1px solid #084F20;
+
+    &:hover,
+    &:focus {
+      background: #fff;
+      color: #084F20;
+      box-shadow: none;
+    }
   }
 }
