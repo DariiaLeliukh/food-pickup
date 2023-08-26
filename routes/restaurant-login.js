@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   } else {
     const templateVars = {
       user: null,
+      error: false
     };
     res.render("restaurantLogin", templateVars);
   }
@@ -18,12 +19,13 @@ router.post("/", (req, res) => {
   const { email, password } = req.body;
   restaurantsQueries.getRestaurantByEmail(email)
     .then(data => {
-      if (data.length === 0) {
-        res.status(403).json({ error: 'Invalid Credentials' });
+      if (data.length === 0 || !bcrypt.compareSync(password, data[0].password)) {
+        const templateVars = {
+          user: null,
+          error: true
+        };
+        res.render("restaurantLogin", templateVars);
         return;
-      } else if (!bcrypt.compareSync(password, data[0].password)) {
-        // TODO: combine this else if with previous if and make it look nice (return to form with error Invalid Credentials)
-        res.status(403).json({ error: 'Invalid password' });
       } else {
         req.session.user_id = data[0].id;
         res.redirect("/restaurant-recent-orders");

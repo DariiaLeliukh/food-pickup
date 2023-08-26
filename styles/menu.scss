@@ -82,6 +82,14 @@
     padding: 30px;
     margin-bottom: 50px;
 
+    .cart-item {
+
+      .itemName,
+      .itemQuantity {
+        margin-bottom: 0;
+      }
+    }
+
     .totalPrice {
       border-bottom: 1px solid;
       margin-bottom: 15px;
@@ -98,8 +106,12 @@
     }
 
     form {
-      margin-top: 15px;
+      margin-top: 50px;
       text-align: center;
+
+      label {
+        color: #4b4b4b;
+      }
 
       input {
         width: 100%;

@@ -87,11 +87,11 @@
             </div>
             <form action="/checkout" method="post">
               <label for="client-phone-number">
-                Enter phone number to make an order
+                Enter your name, phone number and email to make an order
               </label>
               <input required type="text" name="clientName" id="client-name" placeholder="name">
-              <input required type="tel" name="clientPhoneNumber" id="client-phone-number" placeholder="telephone">
-              <input required type="email" name="clientEmail" id="client-email" placeholder="email">
+              <input required type="tel" name="clientPhoneNumber" id="client-phone-number" placeholder="+16015555555">
+              <input required type="email" name="clientEmail" id="client-email" placeholder="email@example.com">
               <input required type="hidden" name="clientOrderItems" id="client-order-items">
               <input required type="hidden" name="clientTotal" id="client-total">
               <input required type="hidden" name="restaurantId" id="restaurant-id" value="<%= restaurantInfo.id %>">

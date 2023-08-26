@@ -63,6 +63,10 @@
   padding: 30px;
   margin-bottom: 50px;
 }
+.menu-page .cart-container .cart-item .itemName,
+.menu-page .cart-container .cart-item .itemQuantity {
+  margin-bottom: 0;
+}
 .menu-page .cart-container .totalPrice {
   border-bottom: 1px solid;
   margin-bottom: 15px;
@@ -77,8 +81,11 @@
   text-transform: capitalize;
 }
 .menu-page .cart-container form {
-  margin-top: 15px;
+  margin-top: 50px;
   text-align: center;
+}
+.menu-page .cart-container form label {
+  color: #4b4b4b;
 }
 .menu-page .cart-container form input {
   width: 100%;
