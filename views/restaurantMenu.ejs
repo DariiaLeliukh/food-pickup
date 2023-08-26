@@ -80,24 +80,26 @@
             </article>
             <% } %>
         </div>
-
-        <div class="cart-container col-12 col-md-4">
-          <h2>Cart</h2>
-          <div id="cart-list">
+        <div class="col-12 col-md-4">
+          <div class="cart-container">
+            <h2>Cart</h2>
+            <div id="cart-list">
+            </div>
+            <form action="/checkout" method="post">
+              <label for="client-phone-number">
+                Enter phone number to make an order
+              </label>
+              <input required type="text" name="clientName" id="client-name" placeholder="name">
+              <input required type="tel" name="clientPhoneNumber" id="client-phone-number" placeholder="telephone">
+              <input required type="email" name="clientEmail" id="client-email" placeholder="email">
+              <input required type="hidden" name="clientOrderItems" id="client-order-items">
+              <input required type="hidden" name="clientTotal" id="client-total">
+              <input required type="hidden" name="restaurantId" id="restaurant-id" value="<%= restaurantInfo.id %>">
+              <button type="submit">Place order</button>
+            </form>
           </div>
-          <form action="/checkout" method="post">
-            <label for="client-phone-number">
-              Enter phone number to make an order
-            </label>
-            <input required type="text" name="clientName" id="client-name" placeholder="name">
-            <input required type="tel" name="clientPhoneNumber" id="client-phone-number" placeholder="telephone">
-            <input required type="email" name="clientEmail" id="client-email" placeholder="email">
-            <input required type="hidden" name="clientOrderItems" id="client-order-items">
-            <input required type="hidden" name="clientTotal" id="client-total">
-            <input required type="hidden" name="restaurantId" id="restaurant-id" value="<%= restaurantInfo.id %>">
-            <button type="submit">Place order</button>
-          </form>
         </div>
+
       </div>
     </div>
 </body>
