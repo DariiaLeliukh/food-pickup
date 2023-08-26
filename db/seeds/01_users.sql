@@ -8,7 +8,7 @@ VALUES
 
 INSERT INTO restaurants (name, phone_number, email, address, image, operating_hours_start, operating_hours_end, password, rating)
 VALUES
-  ('Pizza Paradise', '+12045838224', 'info@pizzaparadise.com', '123 Main St, Vancouver', 'https://www.hotelmousai.com/blog/wp-content/uploads/2021/12/Top-10-Traditional-Foods-in-Italy.jpg', '0900', '2200', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 5),
+  ('Pizza Paradise', '+12045838224', 'info@pizzaparadise.com', '123 Main St, Vancouver', 'https://www.hotelmousai.com/blog/wp-content/uploads/2021/12/Top-10-Traditional-Foods-in-Italy.jpg', '0900', '2200', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 4.9),
   ('Pasta Palace', '+12045838224', 'info@pastapalace.com', '1 St, Victoria', 'https://haidasandwich.ca/wp-content/uploads/2019/12/Italian-Food.jpg', '1000', '2100', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 4);
 
 INSERT INTO menu_items (restaurant_id, name, price, description, image)
