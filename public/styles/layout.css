@@ -86,6 +86,8 @@ h1 {
   background: #FFF;
   text-align: center;
   border-radius: 20px;
+  padding: 50px 100px;
+  margin-top: 50px;
 }
 .order-status p {
   color: #084F20;
